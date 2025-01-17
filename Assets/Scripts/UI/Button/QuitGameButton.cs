@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuitGameButton : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class QuitGameButton : MonoBehaviour
     private void Start()
     {
         // 在 Start 方法中添加按钮点击事件的监听器
-        GetComponent<UnityEngine.UI.Button>().onClick.AddListener(QuitGame);
+        GetComponent<Button>().onClick.AddListener(QuitGame);
     }
 
     private void QuitGame()
