@@ -12,7 +12,7 @@ public class QuitGameButton : MonoBehaviour
 
     private void QuitGame()
     {
-        Debug.Log("你关闭了游戏");
+        //Debug.Log("你关闭了游戏");
         // 退出游戏
         Application.Quit();
     }
