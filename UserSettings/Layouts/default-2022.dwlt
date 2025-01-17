@@ -353,7 +353,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 38690000
       m_LastClickedID: 0
-      m_ExpandedIDs: 94f9ffff
+      m_ExpandedIDs: eafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -486,7 +486,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 40410000
     m_LastClickedID: 16704
-    m_ExpandedIDs: 000000004a7200004c7200004e7200005072000052720000
+    m_ExpandedIDs: 000000000072000002720000047200000672000008720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -514,18 +514,18 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000004a7200004c7200004e7200005072000052720000
+    m_ExpandedIDs: ffffffff00000000007200000272000004720000067200000872000034790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: SkipUnityLogo
-      m_OriginalName: SkipUnityLogo
+      m_Name: QuitGameButton
+      m_OriginalName: QuitGameButton
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 18882
+      m_UserData: 26936
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
