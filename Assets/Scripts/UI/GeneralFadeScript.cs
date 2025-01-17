@@ -35,6 +35,11 @@ public class GeneralFadeScript : MonoBehaviour
 
     void Update()
     {
+        fadeInLogic();
+    }
+
+    void fadeInLogic()
+    {
         if (!fadeInFinished)
         {
             timer += Time.deltaTime; //  计时器累加
