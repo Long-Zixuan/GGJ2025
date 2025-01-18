@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bubble
   - Wall
+  - Scale1
+  - Scale2
+  - Scale3
   layers:
   - Default
   - TransparentFX

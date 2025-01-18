@@ -15,6 +15,8 @@ public class PlayerMoveLogic : MonoBehaviour
 
     private Vector3 targetScale;
 
+    public float maxScale = 1.7f;
+
     public Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -40,7 +42,15 @@ public class PlayerMoveLogic : MonoBehaviour
         transform.localScale = Vector3.Lerp(this.transform.localScale, targetScale, 0.1f);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            targetScale = this.transform.localScale * shrinkRate;
+            if(transform.localScale.x < maxScale)
+            {
+                targetScale = this.transform.localScale * shrinkRate;
+            }
+            else
+            {
+                targetScale = new Vector3(maxScale, maxScale, maxScale);
+            }
+            
             GameObject newBubble = Instantiate(bubblePrefab);
             newBubble.transform.localScale = this.transform.localScale / 4;
             newBubble.transform.position = this.transform.position;
