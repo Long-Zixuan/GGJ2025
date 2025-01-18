@@ -395,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1924833369238229609, guid: a1be397150635d147878556c26bd8353, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.63
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 1924833369238229609, guid: a1be397150635d147878556c26bd8353, type: 3}
       propertyPath: m_LocalPosition.z
@@ -690,6 +690,10 @@ PrefabInstance:
     - target: {fileID: 2549561240145909431, guid: 04c536032371471459593ccab173399c, type: 3}
       propertyPath: m_Name
       value: CrossFade
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549561240145909431, guid: 04c536032371471459593ccab173399c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3694392146522106674, guid: 04c536032371471459593ccab173399c, type: 3}
       propertyPath: m_LocalPosition.x
