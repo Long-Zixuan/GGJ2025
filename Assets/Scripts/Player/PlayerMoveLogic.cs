@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class PlayerMoveLogic : MonoBehaviour
 {
@@ -13,10 +14,13 @@ public class PlayerMoveLogic : MonoBehaviour
     public float shrinkRate = 0.9f;
 
     private Vector3 targetScale;
+
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         targetScale = transform.localScale;
+        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,9 +42,10 @@ public class PlayerMoveLogic : MonoBehaviour
         {
             targetScale = this.transform.localScale * shrinkRate;
             GameObject newBubble = Instantiate(bubblePrefab);
+            newBubble.transform.localScale = this.transform.localScale / 4;
             newBubble.transform.position = this.transform.position;
             newBubble.GetComponent<BubbleLogic>().QuanZhong = Random.Range(0, 100);
-
+            animator.SetTrigger("Attack");
         }
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BubbleLogic : MonoBehaviour
 {
+    public float destoryTime;
     
     public GameObject bubblePrefab;
     
@@ -24,7 +25,10 @@ public class BubbleLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("SelfDestroy", 5);
+        if (destoryTime > 0)
+        {
+            Invoke("SelfDestroy", destoryTime);
+        }
         Invoke("SetFree", 0.2f);
     }
 
