@@ -55,6 +55,11 @@ public class SceneManage : MonoBehaviour
         scaleDoors[1] = scale2Doors;
         
         scaleDoors[2] = scale3Doors;
+
+        if (Player == null)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
     void SetScaleXDoors(int scale, bool state)
@@ -79,21 +84,21 @@ public class SceneManage : MonoBehaviour
         }
         else if (GetPlayerScale() < scale2Min)
         {
-           // print("scale 1");
+            print("scale 1");
             SetScaleXDoors(1,false);
             SetScaleXDoors(2,true);
             SetScaleXDoors(3,true);
         }
         else if (GetPlayerScale() < scale3Min)
         {
-           // print("scale 2");
+            print("scale 2");
             SetScaleXDoors(1,true);
             SetScaleXDoors(2,false);
             SetScaleXDoors(3,true);
         }
         else
         {
-           // print("scale 3");
+            print("scale 3");
             SetScaleXDoors(1,true);
             SetScaleXDoors(2,true);
             SetScaleXDoors(3,false);

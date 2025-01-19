@@ -19,12 +19,16 @@ public class BubbleLogic : MonoBehaviour
 
     public float QuanZhong
     {
-        set { quan_zhong = value; }
+       // set { quan_zhong = value; }
         get { return quan_zhong; }
     }
+
+    private Animator animator_;
     // Start is called before the first frame update
     void Start()
     {
+        animator_ = GetComponent<Animator>();
+        quan_zhong = Random.Range(0, 100);
         if (destoryTime > 0)
         {
             Invoke("SelfDestroy", destoryTime);
@@ -51,6 +55,8 @@ public class BubbleLogic : MonoBehaviour
     IEnumerator SelfDestoryAsync()
     {
         //播放动画
+        animator_.SetTrigger("Boom");
+        isFree_ = false;
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
@@ -73,7 +79,7 @@ public class BubbleLogic : MonoBehaviour
         {
             Vector3 midpoint = (transform.position + other.transform.position) / 2;
             GameObject newBubble = Instantiate(bubblePrefab, midpoint, Quaternion.identity);
-            newBubble.gameObject.GetComponent<BubbleLogic>().QuanZhong = Random.Range(0, 100);
+            newBubble.gameObject.GetComponent<BubbleLogic>().destoryTime = destoryTime;
            
            /* newBubble.transform.localScale = new Vector3(Mathf.Sqrt(Mathf.Pow(other.transform.localScale.x ,2.0f)
                                                                     + Mathf.Pow(transform.localScale.x, 2.0f)), Mathf.Sqrt(Mathf.Pow(other.transform.localScale.y,2.0f)

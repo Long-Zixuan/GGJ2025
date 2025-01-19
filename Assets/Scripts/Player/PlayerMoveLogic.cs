@@ -54,7 +54,7 @@ public class PlayerMoveLogic : MonoBehaviour
             GameObject newBubble = Instantiate(bubblePrefab);
             newBubble.transform.localScale = this.transform.localScale / 4;
             newBubble.transform.position = this.transform.position;
-            newBubble.GetComponent<BubbleLogic>().QuanZhong = Random.Range(0, 100);
+            newBubble.GetComponent<BubbleLogic>().destoryTime = 5f;
             animator.SetTrigger("Attack");
         }
     }
