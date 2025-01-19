@@ -15,7 +15,9 @@ public class PlayerMoveLogic : MonoBehaviour
 
     private Vector3 targetScale;
 
-    public float maxScale = 1.7f;
+    public float maxScale = 3f;
+    
+    public float minScale = 0.08f;
 
     public Animator animator;
 
@@ -46,6 +48,10 @@ public class PlayerMoveLogic : MonoBehaviour
         transform.localScale = Vector3.Lerp(this.transform.localScale, targetScale, 0.1f);
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (transform.localScale.x < minScale)
+            {
+                 return;
+            }
             if(transform.localScale.x < maxScale)
             {
                 targetScale = this.transform.localScale * shrinkRate;

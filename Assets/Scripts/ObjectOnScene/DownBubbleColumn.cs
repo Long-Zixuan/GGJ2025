@@ -20,7 +20,7 @@ public class DownBubbleColumn : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bubble"))
+        if (other.gameObject.CompareTag("Player")) //|| other.gameObject.CompareTag("Bubble"))
         {
             //print("Player hit");
             other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -force), ForceMode2D.Impulse);
