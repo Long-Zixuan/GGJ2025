@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class MoveScreen : MonoBehaviour
     public GameObject T2;
     public GameObject T3;
     public GameObject T4;
+    public GameObject T5;
     public GameObject cameraMain;
 
 
@@ -18,9 +20,12 @@ public class MoveScreen : MonoBehaviour
     private CanvasGroup T2CanvasGroup;
     private CanvasGroup T3CanvasGroup;
     private CanvasGroup T4CanvasGroup;
+    private CanvasGroup T5CanvasGroup;
 
-    private float fadeInDuration = 1.5f; // µ­Èë³ÖÐøÊ±¼ä  
-    private float fadeOutDuration = 1.5f; // µ­³ö³ÖÐøÊ±¼ä  
+    private bool canLoad = false;
+
+    private float fadeInDuration = 1.5f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½  
+    private float fadeOutDuration = 1.5f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½  
 
     private void Start()
     {
@@ -28,6 +33,7 @@ public class MoveScreen : MonoBehaviour
         T2CanvasGroup = T2.GetComponent<CanvasGroup>();
         T3CanvasGroup = T3.GetComponent<CanvasGroup>();
         T4CanvasGroup = T4.GetComponent<CanvasGroup>();
+        T5CanvasGroup = T5.GetComponent<CanvasGroup>();
 
         StartCoroutine(FadeIn());
         T2.transform.DOMoveX(0, 5f, false);
@@ -35,14 +41,24 @@ public class MoveScreen : MonoBehaviour
         T4.transform.DOMoveX(0, 11f, false);
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && canLoad)
+        {
+            T5.SetActive(false);
+            SceneManager.LoadScene("S_Level_1");
+        }
+    }
+
     private IEnumerator FadeIn()
     {
-        T1CanvasGroup.alpha = 0f; // ³õÊ¼»¯ÎªÍêÈ«Í¸Ã÷  
+        T1CanvasGroup.alpha = 0f; // ï¿½ï¿½Ê¼ï¿½ï¿½Îªï¿½ï¿½È«Í¸ï¿½ï¿½  
         T2CanvasGroup.alpha = 0f;
         T3CanvasGroup.alpha = 0f;
         T4CanvasGroup.alpha = 0f;
+        T5CanvasGroup.alpha = 0f;
 
-        // µ­Èë  
+        // ï¿½ï¿½ï¿½ï¿½  
         float elapsedTime = 0f;
         while (elapsedTime < fadeInDuration)
         {
@@ -51,18 +67,18 @@ public class MoveScreen : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        T1CanvasGroup.alpha = 1f; // È·±£ÍêÈ«²»Í¸Ã÷  
+        T1CanvasGroup.alpha = 1f; // È·ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½Í¸ï¿½ï¿½  
 
-        // µÈ´ý 1 Ãë  
+        // ï¿½È´ï¿½ 1 ï¿½ï¿½  
         yield return new WaitForSeconds(1.5f);
 
-        // µ­³ö  
+        // ï¿½ï¿½ï¿½ï¿½  
         elapsedTime = 0f;
         while (elapsedTime < fadeOutDuration)
         {
             T1CanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeOutDuration);
 
-            // ÔÚ T1 µ­³öµÄÒ»°ëÊ±¼äµã¿ªÊ¼µ­Èë T2  
+            // ï¿½ï¿½ T1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ã¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ T2  
             if (elapsedTime >= fadeOutDuration / 2)
             {
                 T2CanvasGroup.alpha = Mathf.Lerp(0f, 1f, (elapsedTime - fadeOutDuration / 2) / (fadeOutDuration / 2));
@@ -72,10 +88,10 @@ public class MoveScreen : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        T1CanvasGroup.alpha = 0f; // È·±£ÍêÈ«Í¸Ã÷  
+        T1CanvasGroup.alpha = 0f; // È·ï¿½ï¿½ï¿½ï¿½È«Í¸ï¿½ï¿½  
         T2CanvasGroup.alpha = 1f;
 
-        //µÈ´ý1s
+        //ï¿½È´ï¿½1s
         yield return new WaitForSeconds(1.5f);
 
 
@@ -84,7 +100,7 @@ public class MoveScreen : MonoBehaviour
         {
             T2CanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeOutDuration);
 
-            // ÔÚ T2 µ­³öµÄÒ»°ëÊ±¼äµã¿ªÊ¼µ­Èë T3 
+            // ï¿½ï¿½ T2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ã¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ T3 
             if (elapsedTime >= fadeOutDuration / 2)
             {
                 T3CanvasGroup.alpha = Mathf.Lerp(0f, 1f, (elapsedTime - fadeOutDuration / 2) / (fadeOutDuration / 2));
@@ -97,12 +113,12 @@ public class MoveScreen : MonoBehaviour
         T2CanvasGroup.alpha = 0f;
         T3CanvasGroup.alpha = 1f;
 
-        //³ÖÐøÊ±¼ä,ÆäÓàÄ¬ÈÏ
+        //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½
         cameraMain.transform.DOShakePosition(1);
-        //³ÖÐøÊ±¼ä¡¢Ç¿¶È£¨ÏÂÎªÖ»ÔÚX¡¢Y·½ÏòÉÏÕð¶¯£©
+        //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä¡¢Ç¿ï¿½È£ï¿½ï¿½ï¿½ÎªÖ»ï¿½ï¿½Xï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ð¶¯£ï¿½
         cameraMain.transform.DOShakePosition(1, new Vector3(1, 1, 0));
 
-        //µÈ´ý1s
+        //ï¿½È´ï¿½1s
         yield return new WaitForSeconds(2f);
 
 
@@ -112,7 +128,7 @@ public class MoveScreen : MonoBehaviour
         {
             T3CanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeOutDuration);
 
-            // ÔÚ T2 µ­³öµÄÒ»°ëÊ±¼äµã¿ªÊ¼µ­Èë T3 
+            // ï¿½ï¿½ T2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ã¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ T3 
             if (elapsedTime >= fadeOutDuration / 2)
             {
                 T4CanvasGroup.alpha = Mathf.Lerp(0f, 1f, (elapsedTime - fadeOutDuration / 2) / (fadeOutDuration / 2));
@@ -125,11 +141,30 @@ public class MoveScreen : MonoBehaviour
         T4CanvasGroup.alpha = 1f;
 
 
-        //µÈ´ý1s
+        elapsedTime = 0f;
+        while (elapsedTime < fadeOutDuration)
+        {
+            T4CanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeOutDuration);
+
+            // ï¿½ï¿½ T2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ã¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ T3 
+            if (elapsedTime >= fadeOutDuration / 2)
+            {
+                T5CanvasGroup.alpha = Mathf.Lerp(0f, 1f, (elapsedTime - fadeOutDuration / 2) / (fadeOutDuration / 2));
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        T4CanvasGroup.alpha = 0f;
+        T5CanvasGroup.alpha = 1f;
+
+        canLoad = true;
+        //ï¿½È´ï¿½1s
         yield return new WaitForSeconds(1f);
 
        
-            SceneManager.LoadScene("S_Level_1");
+        
+           // SceneManager.LoadScene("S_Level_1");
         
         
 
