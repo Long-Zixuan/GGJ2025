@@ -9,6 +9,7 @@ TagManager:
   - Scale1
   - Scale2
   - Scale3
+  - DaoJv
   layers:
   - Default
   - TransparentFX

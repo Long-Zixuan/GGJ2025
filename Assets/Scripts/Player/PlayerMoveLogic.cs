@@ -18,6 +18,10 @@ public class PlayerMoveLogic : MonoBehaviour
     public float maxScale = 1.7f;
 
     public Animator animator;
+
+    private float getDaoJvCount = 0;
+    
+    public float GetDaoJvCount{ get => getDaoJvCount;}
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +68,12 @@ public class PlayerMoveLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("Bubble") && collision.gameObject.GetComponent<BubbleLogic>().IsFree)
         {
             targetScale = BubbleLogic.GetScaleAtSameSize(this.transform.localScale, collision.gameObject.transform.localScale);
+        }
+
+        if (collision.gameObject.CompareTag("DaoJv"))
+        {
+            getDaoJvCount++;
+            Destroy(collision.gameObject);
         }
     }
 }

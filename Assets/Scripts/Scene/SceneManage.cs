@@ -7,6 +7,10 @@ using UnityEngine.Serialization;
 public class SceneManage : MonoBehaviour
 {
     public GameObject Player;
+
+    public GameObject playerHealthUIScene1;
+    public GameObject playerHealthUIScene2;
+    public GameObject playerHealthUIScene3;
     
     private static SceneManage instance;
 
@@ -85,6 +89,9 @@ public class SceneManage : MonoBehaviour
         else if (GetPlayerScale() < scale2Min)
         {
             print("scale 1");
+            playerHealthUIScene1.SetActive(true);
+            playerHealthUIScene2.SetActive(false);
+            playerHealthUIScene3.SetActive(false);
             SetScaleXDoors(1,false);
             SetScaleXDoors(2,true);
             SetScaleXDoors(3,true);
@@ -92,6 +99,9 @@ public class SceneManage : MonoBehaviour
         else if (GetPlayerScale() < scale3Min)
         {
             print("scale 2");
+            playerHealthUIScene1.SetActive(true);
+            playerHealthUIScene2.SetActive(true);
+            playerHealthUIScene3.SetActive(false);
             SetScaleXDoors(1,true);
             SetScaleXDoors(2,false);
             SetScaleXDoors(3,true);
@@ -99,6 +109,9 @@ public class SceneManage : MonoBehaviour
         else
         {
             print("scale 3");
+            playerHealthUIScene1.SetActive(true);
+            playerHealthUIScene2.SetActive(true);
+            playerHealthUIScene3.SetActive(true);
             SetScaleXDoors(1,true);
             SetScaleXDoors(2,true);
             SetScaleXDoors(3,false);
